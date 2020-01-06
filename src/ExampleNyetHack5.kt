@@ -16,6 +16,8 @@ fun main() {
 //    оператор when
     val healtStatus = any(healtPoints, name, isBlessed)
     println("$healtStatus")
+//    Вызов собственной функции, создающая напиток
+    println(castFureball(5))
 }
 
 private fun auraColor(isBlessed: Boolean, healtPoints: Int, isImmortal: Boolean): String {
@@ -37,4 +39,8 @@ private fun any(healtPoints: Int, name: String, isBlessed: Boolean): Any {
         else -> "$name - в ужасном состоянии"
     }
     return healtStatus
+}
+//Добавляем собственную функцию порождающую бокал дурманящего напитка
+private fun castFureball (numFireballs:Int){
+    println("Появляется $numFireballs стаканов огненного шара.")
 }
