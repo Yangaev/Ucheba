@@ -4,13 +4,14 @@
  */
 fun main() {
     runSimulation()
+
 }
 //Используем встривание
 
  fun runSimulation(){
     val greetingFunction = configureGreetingFunction()
      println(greetingFunction("Жора"))
-
+     println(greetingFunction("Жора"))
 }
 //Функция configureGreetingFunction
 fun configureGreetingFunction():(String)-> String{
