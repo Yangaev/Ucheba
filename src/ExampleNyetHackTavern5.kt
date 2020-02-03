@@ -2,10 +2,10 @@
 fun main() {
     var bevarrage = readLine()
     if(bevarrage!=null){
-        bevarrage.capitalize()
+      bevarrage = bevarrage.capitalize()
     }else{
         println("Я не могу сделать этот напиток без сбоев - напиток был нулевым")
     }
-    val bevarrgeServerd = bevarrage?:"Эль"
+    val bevarrgeServerd:String = bevarrage?:"Эль"
     println(bevarrgeServerd)
 }
