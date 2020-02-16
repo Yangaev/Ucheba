@@ -20,6 +20,7 @@ val indexOfAppostraphe = TAVEREN_NAME.indexOf('\'')
         "Мадригал говорть: Спасибо за $name"
     }
     println(phrase)
+    //Преобразование строки в Double
     performPurchase(price.toDouble())
 }
 private fun toDragonSpeak(phrase:String) =
@@ -40,5 +41,9 @@ private fun displyBalance(){
 //Функция для вызова функции
 fun performPurchase(price:Double){
     displyBalance()
+    val totalPurse = playerGold+(playerSilver/100.0)
+    val remainningBalance = totalPurse-price
+    println("Всего в кошельке:$totalPurse")
     println("Покупка товара по цене: $price")
+    println("Остаток на балансе:${"%.2f".format(remainningBalance)}")
 }
