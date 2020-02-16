@@ -1,8 +1,9 @@
 //Настройка кошелька игрока
+import kotlin.math.roundToInt
 const val TAVEREN_NAME = "Billbo's Begins"
 //Переменные для хранения золотых монет
-val playerGold = 10
-val playerSilver = 10
+var playerGold = 10
+var playerSilver = 10
 fun main() {
     placeOrder("shandy,Dragon's Breath, 5.91")
 }
@@ -43,7 +44,14 @@ fun performPurchase(price:Double){
     displyBalance()
     val totalPurse = playerGold+(playerSilver/100.0)
     val remainningBalance = totalPurse-price
+//    Перевод серебра в золото
+    val remainingGold = remainningBalance.toInt()
+    val remainingSilver = (remainningBalance % 1 * 100).roundToInt()
+    playerGold=remainingGold
+    playerSilver=remainingSilver
+    displyBalance()
     println("Всего в кошельке:$totalPurse")
     println("Покупка товара по цене: $price")
+//    Выводим остаток на балансес помощью форматирования
     println("Остаток на балансе:${"%.2f".format(remainningBalance)}")
 }
