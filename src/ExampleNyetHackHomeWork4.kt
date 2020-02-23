@@ -4,13 +4,13 @@ import pints as pints
 
 //const val TAVERN_NAMESS = "Billbo's Begins"
 //Переменные для хранения золотых монет
-var playerGolds = 10
-var playerSilvers = 10
-var barrel = 5.0
-const val pints = 0.125
+var barrels = 5.0
+const val pintes = 0.125
+var drCoin = 5.0
+val kurs = 1.43
 fun main() {
     placeOrder("shandy,Dragon's Breath, 5.91")
-    placeOrder("shandy,Dragon's Breath, 5.91")
+
 }
 
 private fun placeOrder(menuData:String){
@@ -27,8 +27,8 @@ private fun placeOrder(menuData:String){
     }
     println(phrase)
     //Преобразование строки в Double
-    performsPurchase(price.toDouble())
-      drinkPinta()
+    performsPurchases(price.toDouble())
+    drinkPinta()
 }
 private fun toDragonSpeak(phrase:String) =
     phrase.replace(Regex("""[а-я]|[А-Я]""")){
@@ -43,34 +43,32 @@ private fun toDragonSpeak(phrase:String) =
     }
 //Функция вывода баланса на экран
 private fun displyBalance(){
-    println("Баланс кошелька игрока:Gold: $playerGold, Silver:$playerSilver")
+    println("Баланс кошелька игрока: DrCoin:$drCoin")
 }
 //Функция для вызова функции
-fun performsPurchase(price:Double){
+fun performsPurchases(price:Double){
     displyBalance()
-
-    val totalPurse = playerGold+(playerSilver/100.0)
+//Переводим DrCoin в золото
+    val totalPurse = drCoin*kurs
     if(totalPurse<price){
-       println("Нехватает ${"%.2f".format(totalPurse-price)} для покупки ")
+        println("Нехватает ${"%.2f".format(totalPurse-price)} для покупки ")
     }else{
+//       Совершаем покупки
         val remainningBalance = totalPurse-price
-//    Перевод серебра в золото
-        val remainingGold = remainningBalance.toInt()
-        val remainingSilver = (remainningBalance % 1 * 100).roundToInt()
-        playerGold=remainingGold
-        playerSilver=remainingSilver
+//    Перевод золота в DrCoin
+        val remainingGold = remainningBalance/kurs
         displyBalance()
-        println("Всего в кошельке:$totalPurse")
+        println("Всего в кошельке:${"%.2f".format(totalPurse)} Gold")
         println("Покупка товара по цене: $price")
 //    Выводим остаток на балансес помощью форматирования
-        println("Остаток на балансе:${"%.2f".format(remainningBalance)}")
+        println("Остаток на балансе:${"%.4f".format(remainingGold)}")
     }
 
 }
 private fun drinkPinta(){
-for (i in 1..12){
-    barrel -= pints
-println("Заказ № $i = Остаток в бочке $barrel ")
-}
+    for (i in 1..12){
+        barrel -= pints
+        println("Заказ № $i = Остаток в бочке $barrel ")
+    }
 
 }
