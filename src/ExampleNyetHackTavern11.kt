@@ -8,8 +8,14 @@ import kotlin.math.roundToInt
 val patronLists = listOf("Eli","Mordoc","Sophi")
 fun main() {
     placeOrder("shandy,Dragon's Breath, 5.91")
-    println("Вывод списка посетителей: $patronLists")
-    println("Выводим первого посетителя: ${patronLists[0]}")
+//    Проверяем посетиля
+    if(patronLists.contains("Eli")){
+        println("Хозяин таверны говорит: Эли находится в конце комнаты")
+    }else{
+        println("Хозяин таверны говорит: Эли здесь нет")
+    }
+//    println("Вывод списка посетителей: $patronLists")
+//    println("Выводим первого посетителя: ${patronLists[0]}")
 }
 
 private fun placeOrder(menuData:String){
