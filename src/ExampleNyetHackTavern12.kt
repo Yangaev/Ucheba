@@ -9,11 +9,24 @@ import kotlin.math.roundToInt
 val patronListss = mutableListOf("Eli","Mordoc","Sophi")
 fun main() {
     placeOrder("shandy,Dragon's Breath, 5.91")
+//    Используем цикл for
+    for(patron in patronListss){
+        println("добрый вечер $patron")
+    }
+//    Используем forEachIndexed
+    patronListss.forEachIndexed { index, patron ->
+        println("Добрый вечер, $patron - вы #${index+1} в очреди")
+    }
 //    выводим список
     println("Вывод списка посетителей: $patronListss")
-    patronListss.remove("Eli")
-    patronListss.add("Alex")
-    println("Вовод измененного списка посетителей $patronListss")
+//    patronListss.remove("Eli")
+//    patronListss.add("Alex")
+//    patronListss.add(0,"Alex")
+//    Сделали изменяемы список обратно только для чтения
+//    val readOnlyPatronList = patronListss.toList()
+//Меняем имя первого в списке
+//    patronListss[0]="Alexis"
+//    println("Вовод измененного списка посетителей $patronListss")
 
 }
 
