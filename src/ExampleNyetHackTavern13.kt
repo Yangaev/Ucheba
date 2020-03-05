@@ -1,19 +1,28 @@
 //Моделирование нескольких заказов
 
-//Импортируем библиотеку
+//Импортируем библиотеку для рандома
 import kotlin.math.roundToInt
-
-//
+//иморт библитеки для чтения из файла
+import java.io.File
+//val patronList = mutableListOf("Eli","Mordoc","Sophi")
+//Создаем переменную в которую считаем данные из файла
+val menuLists=File("data/tavern-menu-data.txt")
+    .readText()
+    .split("\n")
 fun main() {
 
 //    Используем forEachIndexed
     patronListss.forEachIndexed { index, patron ->
         println("Добрый вечер, $patron - вы #${index+1} в очреди")
-        placeOrder(patron,"shandy,Dragon's Breath, 5.91")
+//        placeOrder(patron,"shandy,Dragon's Breath, 5.91")
+        placeOrder(patron,menuLists.shuffled().first())
     }
 //    выводим список
     println("Вывод списка посетителей: $patronListss")
-
+//    Вывод меню
+menuLists.forEachIndexed { index, data ->
+    println("$index: $data")
+}
 
 }
 
